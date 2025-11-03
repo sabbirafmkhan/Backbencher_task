@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:softvance_task/constants/colors.dart';
+import 'package:softvance_task/features/onboarding/onboarding_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,8 @@ class MyApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(backgroundColor: AppColors.purple),
         ),
       ),
+      initialRoute: OnboardingScreen.routeName,
+      routes: {OnboardingScreen.routeName: (_) => OnboardingScreen()},
     );
   }
 }
