@@ -25,14 +25,29 @@ class _LocationScreenState extends State<LocationScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsetsGeometry.all(16),
+          padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Align(
                 alignment: Alignment.center,
                 child: Text(
                   'Welcome! Your Smart Travel Alarm',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 12),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Stay on schedule and enjoy every moment of your journey.',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white70,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(height: 12),
@@ -45,29 +60,37 @@ class _LocationScreenState extends State<LocationScreen> {
                 ),
               ),
               SizedBox(height: 18),
-              RoundedButton(
-                icon: Icons.location_on,
-                text: _loading ? 'Fetching...' : 'Use Current Location',
-                enabled: !_loading,
-                onPressed: _getLocation,
-              ),
-              if (_location != null) ...[
-                SizedBox(height: 14),
-                Text("Selected Location: $_location"),
-              ],
-              Spacer(),
-              RoundedButton(
-                text: 'Home',
-                enabled: _location != null,
-                onPressed: () {
-                  if (_location != null) {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      '/home',
-                      arguments: _location,
-                    );
-                  }
-                },
+
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    RoundedButton(
+                      icon: Icons.location_on,
+                      text: _loading ? 'Fetching...' : 'Use Current Location',
+                      enabled: !_loading,
+                      onPressed: _getLocation,
+                    ),
+                    if (_location != null) ...[
+                      SizedBox(height: 14),
+                      Text("Selected Location: $_location"),
+                    ],
+                    SizedBox(height: 16),
+                    RoundedButton(
+                      text: 'Home',
+                      enabled: _location != null,
+                      onPressed: () {
+                        if (_location != null) {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            '/home',
+                            arguments: _location,
+                          );
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

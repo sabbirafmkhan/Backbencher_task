@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:softvance_task/constants/colors.dart';
+import 'package:softvance_task/features/home/home_screen.dart';
 import 'package:softvance_task/features/location/location_screen.dart';
 import 'package:softvance_task/features/onboarding/onboarding_screen.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         OnboardingScreen.routeName: (_) => OnboardingScreen(),
         LocationScreen.routeName: (_) => LocationScreen(),
+        HomeScreen.routeName: (_) => HomeScreen(),
       },
     );
   }
